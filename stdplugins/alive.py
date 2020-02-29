@@ -14,14 +14,19 @@ async def _(event):
     async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
-    if event.reply_to_msg_id:
-#         reply_message = await event.get_reply_message()
-#         await reply_message.reply(mentions)
-        await alive.client.send_message(
+#     if event.reply_to_msg_id:
+# #         reply_message = await event.get_reply_message()
+# #         await reply_message.reply(mentions)
+#         await alive.client.send_message(
+#             alive.chat_id,
+#             f"Python: 3.7.3\nEdited by @HeisenbergTheDanger\n`Database Status: Databases functioning normally!\n\nAlways with you, my master!\n`My owner`: {DEFAULTUSER}`",
+#             file="https://i.imgur.com/pU8BE9B.png"
+#         )
+#     else:
+#         await event.reply(mentions)
+    await alive.client.send_message(
             alive.chat_id,
             f"Python: 3.7.3\nEdited by @HeisenbergTheDanger\n`Database Status: Databases functioning normally!\n\nAlways with you, my master!\n`My owner`: {DEFAULTUSER}`",
             file="https://i.imgur.com/pU8BE9B.png"
         )
-    else:
-        await event.reply(mentions)
     await event.delete()
