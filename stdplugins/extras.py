@@ -5,7 +5,7 @@ import sys
 
 
 
-@register(outgoing=True, pattern="^.yo$")
+@borg.on(outgoing=True, pattern="^.yo$")
 async def yo(e):
     t = "yo"
     for j in range(15):
@@ -13,7 +13,7 @@ async def yo(e):
         await e.edit(t)		      
 
 		      
-@register(outgoing=True, pattern="^.noice$")
+@borg.on(outgoing=True, pattern="^.noice$")
 async def noice(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         if e.fwd_from:
@@ -28,31 +28,31 @@ async def noice(e):
         await e.delete()		      
 
 
-@register(outgoing=True, pattern="^.lol$")
+@borg.on(outgoing=True, pattern="^.lol$")
 async def lol(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("L😂L")
 
 		      
-@register(outgoing=True, pattern="^.nice$")
+@borg.on(outgoing=True, pattern="^.nice$")
 async def nice(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("Noice")
 	
 	
-@register(outgoing=True, pattern="^.p$")
+@borg.on(outgoing=True, pattern="^.p$")
 async def p(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("Participate is giveaways.")	
 
 	
-@register(outgoing=True, pattern="^.w$")
+@borg.on(outgoing=True, pattern="^.w$")
 async def w(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("Wait for results.")	
 
 	
-@register(outgoing=True, pattern="^.b$")
+@borg.on(outgoing=True, pattern="^.b$")
 async def b(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("Better luck next time.")	
