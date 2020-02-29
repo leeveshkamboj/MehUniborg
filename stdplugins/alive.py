@@ -24,8 +24,8 @@ async def _(event):
 #         )
 #     else:
 #         await event.reply(mentions)
-    await alive.client.send_message(
-            alive.chat_id,
+    await event.client.send_message(
+            event.chat_id,
             "Python: 3.7.3\nfork by: @HeisenbergTheDanger\n`Database Status: Databases functioning normally!\n\nAlways with you, my master!\n`My owner`: Walter White`",
             file="https://i.imgur.com/pU8BE9B.png"
         )
