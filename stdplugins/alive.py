@@ -26,7 +26,7 @@ async def _(event):
 #         await event.reply(mentions)
     await alive.client.send_message(
             alive.chat_id,
-            f"Python: 3.7.3\nEdited by @HeisenbergTheDanger\n`Database Status: Databases functioning normally!\n\nAlways with you, my master!\n`My owner`: {DEFAULTUSER}`",
+            "Python: 3.7.3\nfork by: @HeisenbergTheDanger\n`Database Status: Databases functioning normally!\n\nAlways with you, my master!\n`My owner`: Walter White`",
             file="https://i.imgur.com/pU8BE9B.png"
         )
     await event.delete()
