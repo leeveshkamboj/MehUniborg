@@ -37,5 +37,24 @@ async def lol(e):
 @register(outgoing=True, pattern="^.nice$")
 async def nice(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("Noice")		      
+        await e.edit("Noice")
+	
+	
+@register(outgoing=True, pattern="^.p$")
+async def p(e):
+    if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
+        await e.edit("Participate is giveaways.")	
+
+	
+@register(outgoing=True, pattern="^.w$")
+async def w(e):
+    if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
+        await e.edit("Wait for results.")	
+
+	
+@register(outgoing=True, pattern="^.b$")
+async def b(e):
+    if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
+        await e.edit("Better luck next time.")	
+	
 		      
