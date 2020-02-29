@@ -69,8 +69,7 @@ async def approve_p_m(event):
                     await borg.storage.PREV_REPLY_MESSAGE[chat.id].delete()
                     del borg.storage.PREV_REPLY_MESSAGE[chat.id]
                 approve(chat.id, reason)
-                #await event.edit("`This bitch can msg you Now!`")
-                await event.edit("`Approved for pm!`")
+                await event.edit("`This bitch can msg you Now!`")
                 await asyncio.sleep(3)
                 await event.delete()
 
