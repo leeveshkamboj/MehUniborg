@@ -13,7 +13,7 @@ from telethon.tl.types import (
     MessageMediaPhoto
 )
 
-channel = {-1001191913647 : "Trash", -1001469149410 : "WWMethLabs}
+channel = {-1001191913647 : "Trash", -1001469149410 : "WWMethLabs"}
 logs_id = -411442681
 
 
