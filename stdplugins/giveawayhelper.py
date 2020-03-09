@@ -63,24 +63,24 @@ async def _(event):
                                 force_document=False
                             )
           sent_count += 1
-          await event.edit("Sent : {sent_count}\nError : {error_count}")
+          await event.edit(f"Sent : {sent_count}\nError : {error_count}")
         except Exception as error:
           await borg.send_message(logs_id, f"Error in sending at {channel[chat_id]} ({chat_id}).")
           await borg.send_message(logs_id, "Error! " + str(error))
           error_count += 1
-          await event.edit("Sent : {sent_count}\nError : {error_count}")
+          await event.edit("fSent : {sent_count}\nError : {error_count}")
     else:
       raw_text = previous_message.text
       for chat_id in channel.keys():
         try:
           await borg.send_message(chat_id, raw_text)
           sent_count += 1
-          await event.edit("Sent : {sent_count}\nError : {error_count}")
+          await event.edit(f"Sent : {sent_count}\nError : {error_count}")
         except Exception as error:
           await borg.send_message(logs_id, f"Error in sending at {channel[chat_id]} ({chat_id}).")
           await borg.send_message(logs_id, "Error! " + str(error))
           error_count+=1
-          await event.edit("Sent : {sent_count}\nError : {error_count}")
+          await event.edit(f"Sent : {sent_count}\nError : {error_count}")
       await event.edit(f"{sent_count} messages sent with {error_count} errors.")
       await borg.send_message(logs_id, f"{error_count} Errors")
 
@@ -102,12 +102,12 @@ async def _(event):
     try:
       await borg.forward_messages(chat_id, previous_message)
       sent_count += 1
-      await event.edit("Sent : {sent_count}\nError : {error_count}")
+      await event.edit(f"Sent : {sent_count}\nError : {error_count}")
     except Exception as error:
       await borg.send_message(logs_id, f"Error in sending at {channel[chat_id]} ({chat_id}).")
       await borg.send_message(logs_id, "Error! " + str(error))
       error_count+=1
-      await event.edit("Sent : {sent_count}\nError : {error_count}")
+      await event.edit(f"Sent : {sent_count}\nError : {error_count}")
   await event.edit(f"{sent_count} messages sent with {error_count} errors.")
   await borg.send_message(logs_id, f"{error_count} Errors")
 
