@@ -33,15 +33,20 @@ async def _(event):
       uploaded_sticker = await borg.upload_file(file, file_name="img.png")
       for chat_id in channel.keys():
         await borg.send_file(
-                        chat_id,
+#                         chat_id,
+#                     MessageMediaPhoto(
+#                         file=uploaded_sticker,
+#                         mime_type='image/png',
+#                         attributes=[
+#                             DocumentAttributeFilename(
+#                                 "img.png"
+#                             )
+#                         ]
+#                     )
+            
                     MessageMediaPhoto(
-                        file=uploaded_sticker,
-                        mime_type='image/png',
-                        attributes=[
-                            DocumentAttributeFilename(
-                                "img.png"
-                            )
-                        ]
+                        file=img.png,
+                        mime_type='image/png'
                     )
                 )
     else:
