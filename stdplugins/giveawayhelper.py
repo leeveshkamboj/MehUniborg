@@ -14,7 +14,7 @@ from telethon.tl.types import (
 )
 
 channel = {
-            -1001191913647 : "Trash", -1001469149410 : "@WWMethLabs", 1302017626 : "@bulbagiveaways",
+            -1001191913647 : "Trash", -1001469149410 : "@WWMethLabs", 1289688851 : "@error69club",
             1461820250 : "@T3L3FAM", 1398471558 : "fsocietypremium", 1185965787 : "@jusicegiveaway",
             1295042400 : "@ninjahub007", 1275383207 : "@mivislink1", 1180330670 : "@joinforgiveaway",
             1212694660 : "Dark Giveaways", 1201395264 : "Abnormal bins", 1185741535 : "@BurnCracking",
@@ -27,9 +27,9 @@ channel = {
             1186776124 : "@netflixaccc", 1351220732 : "@crazyarmygames", 1336950662 : "@joinhereforgibaways",
             1263822220 : "@sam9086", 1456736802 : "@theoggyworld", 223462655 : "@mavericgiveaway",
             1432006231 :"Direct zone", 1404962771 : "@ppremium_giveaways", 1336950662 : "@joinhereforgibaways",
-            1219885001 : "@freechannelsforall", 1409761529 : "@phoenixgang", 1289688851 : "@error69club",
+            1219885001 : "@freechannelsforall", 1409761529 : "@phoenixgang", 1302017626 : "@bulbagiveaways",
             1423183267 : "@androidapk_mod", 1437719131 : "@vmhack", 1236770095 : "@liveismylife",
-            1364162634 : "@fir3club"
+            1364162634 : "@fir3club", -1001467728767 : "@PremiumGiweaway"
           }
 logs_id = -411442681
 
