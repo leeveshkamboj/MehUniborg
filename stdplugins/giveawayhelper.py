@@ -76,7 +76,7 @@ async def _(event):
           await borg.send_message(logs_id, f"Error in sending at {channel[chat_id]} ({chat_id}).")
           await borg.send_message(logs_id, "Error! " + str(error))
           error_count+=1
-      await event.edit(f"Sent with {error_count} errors.")
+      await event.edit(f"{sent_count} messages sent with {error_count} errors.")
       await borg.send_message(logs_id, f"{error_count} Errors")
 
   
@@ -100,7 +100,7 @@ async def _(event):
       await borg.send_message(logs_id, f"Error in sending at {channel[chat_id]} ({chat_id}).")
       await borg.send_message(logs_id, "Error! " + str(error))
       error_count+=1
-  await event.edit(f"Sent with {error_count} errors.")
+  await event.edit(f"{sent_count} messages sent with {error_count} errors.")
   await borg.send_message(logs_id, f"{error_count} Errors")
 
 
