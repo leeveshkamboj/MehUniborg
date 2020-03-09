@@ -49,7 +49,7 @@ async def _(event):
 #                         mime_type='image/png'
 #                     )
 #                 )
-            await event.client.send_message(chat_id,
+            await borg.send_message(chat_id,
                                     previous_message.text,
                                     file="img.png")	
     else:
