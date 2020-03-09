@@ -29,7 +29,7 @@ channel = {
             1432006231 :"Direct zone", 1404962771 : "@ppremium_giveaways", 1336950662 : "@joinhereforgibaways",
             1219885001 : "@freechannelsforall", 1409761529 : "@phoenixgang", 1302017626 : "@bulbagiveaways",
             1423183267 : "@androidapk_mod", 1437719131 : "@vmhack", 1236770095 : "@liveismylife",
-            1364162634 : "@fir3club", -1001467728767 : "@PremiumGiweaway"
+            1364162634 : "@fir3club", -1001467728767 : "@PremiumGiweaway", 1424034733 : "@onlupremiumarmy"
           }
 logs_id = -411442681
 
