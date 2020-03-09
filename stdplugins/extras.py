@@ -33,6 +33,15 @@ async def lol(e):
         await e.edit("L😂L")
 
 
+@borg.on(events.NewMessage(pattern=r"^.alol$", outgoing=True))	
+async def alol(e):
+    if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
+        t = "L😂L"
+        for j in range(15):
+            t = "L🤣L" if j%2==0 else "L😂L"
+            await e.edit(t)
+		
+
 @borg.on(events.NewMessage(pattern=r"^.nice$", outgoing=True))
 async def nice(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
