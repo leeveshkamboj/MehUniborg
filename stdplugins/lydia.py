@@ -48,7 +48,7 @@ async def lydia_disable_enable(event):
             # logger.info("Session Language: {0}".format(str(session.language)))
             # logger.info("Session Expires: {0}".format(str(session.expires)))
             logger.info(add_s(user_id, chat_id, session.id, session.expires))
-            await event.edit(f"hi")
+            await event.edit(f"Yo")
         elif input_str == "d":
             logger.info(remove_s(user_id, chat_id))
             await event.edit(f"[__signal lost__](tg://user?id={user_id})")
