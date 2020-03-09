@@ -4,7 +4,6 @@ from telethon import events
 
 
 channel = {-1001191913647: "Trash"}
-chat_ids = channel.keys()
 logs_id = -411442681
 
 
@@ -21,7 +20,7 @@ async def _(event):
   if event.reply_to_msg_id:
     previous_message = await event.get_reply_message()
     message = previous_message.message
-  for chat_id in chat_ids
+  for chat_id in channel.keys():
     try:
       await borg.send_message(chat_id, message)
       await borg.send_message(logs_id, f"{message} sent at {channel[chat_id]}({chat_id}) successfully.")
