@@ -32,26 +32,19 @@ async def _(event):
       file = await borg.download_file(previous_message.media)
       uploaded_sticker = await borg.upload_file(file, file_name="img.png")
       for chat_id in channel.keys():
-#         await borg.send_file(
-# #                         chat_id,
-# #                     MessageMediaPhoto(
-# #                         file=uploaded_sticker,
-# #                         mime_type='image/png',
-# #                         attributes=[
-# #                             DocumentAttributeFilename(
-# #                                 "img.png"
-# #                             )
-# #                         ]
-# #                     )
-            
-#                     MessageMediaPhoto(
-#                         file=img.png,
-#                         mime_type='image/png'
-#                     )
-#                 )
-            await borg.send_message(chat_id,
-                                    previous_message.text,
-                                    file="img.png")	
+        async with borg.conversation(chat_id) as bot_conv:
+            await bot_conv.send_file(
+                                InputMediaUploadedDocument(
+                                    file=uploaded_sticker,
+                                    mime_type='image/png',
+                                    attributes=[
+                                        DocumentAttributeFilename(
+                                            "img.png"
+                                        )
+                                    ]
+                                ),
+                                force_document=False
+                            )
     else:
       raw_text = previous_message.text
       error_count = 0
