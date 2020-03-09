@@ -1,6 +1,7 @@
 import asyncio
 import datetime
 from telethon import events
+from uniborg.util import admin_cmd
 
 
 channel = {-1001191913647: "Trash"}
