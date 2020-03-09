@@ -3,7 +3,8 @@ import datetime
 from telethon import events
 
 
-chat_ids = {-1001191913647: "Trash"}
+channel = {-1001191913647: "Trash"}
+chat_ids = channel.keys()
 logs_id = -411442681
 
 
@@ -20,10 +21,10 @@ async def _(event):
   if event.reply_to_msg_id:
     previous_message = await event.get_reply_message()
     message = previous_message.message
-  for chat_id in chat_ids.keys()
+  for chat_id in chat_ids
     try:
       await borg.send_message(chat_id, message)
-      await borg.send_message(logs_id, f"{message} sent at {chatids[chat_id]}({chat_id}) successfully.")
+      await borg.send_message(logs_id, f"{message} sent at {channel[chat_id]}({chat_id}) successfully.")
     except:
       await borg.send_message(logs_id, error_msg)
 
