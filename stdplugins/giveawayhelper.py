@@ -20,7 +20,7 @@ async def _(event):
   input_str = event.pattern_match.group(1)
   if event.reply_to_msg_id:
     previous_message = await event.get_reply_message()
-    if is_message_image(previous_message):
+    if previous_message.photo:
       file = await borg.download_file(previous_message.media)
       uploaded_sticker = await borg.upload_file(file, file_name="img.png")
       await bot_conv.send_file(
