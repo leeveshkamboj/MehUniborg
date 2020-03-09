@@ -20,20 +20,34 @@ async def _(event):
   input_str = event.pattern_match.group(1)
   if event.reply_to_msg_id:
     previous_message = await event.get_reply_message()
-    message = previous_message.message
-    raw_text = previous_message.text
-  error_count = 0
-  for chat_id in channel.keys():
-    try:
-      await borg.send_message(chat_id, message)
-      await borg.send_message(chat_id, raw_text)
-    except Exception as error:
-      await borg.send_message(logs_id, f"Error in sending at {channel[chat_id]} ({chat_id}).")
-      await borg.send_message(logs_id, "Error! " + str(error))
-      error_count+=1
-  await event.edit(f"Sent with {error_count} errors.")
-  await borg.send_message(logs_id, f"{error_count} Errors")
-  
+    if is_message_image(previous_message):
+      file = await borg.download_file(previous_message.media)
+      uploaded_sticker = await borg.upload_file(file, file_name="img.png")
+      await bot_conv.send_file(
+                    InputMediaUploadedDocument(
+                        file=uploaded_sticker,
+                        mime_type='image/png',
+                        attributes=[
+                            DocumentAttributeFilename(
+                                "img.png"
+                            )
+                        ]
+                    ),
+                    force_document=True
+                )
+    else:
+      raw_text = previous_message.text
+      error_count = 0
+      for chat_id in channel.keys():
+        try:
+          await borg.send_message(chat_id, raw_text)
+        except Exception as error:
+          await borg.send_message(logs_id, f"Error in sending at {channel[chat_id]} ({chat_id}).")
+          await borg.send_message(logs_id, "Error! " + str(error))
+          error_count+=1
+      await event.edit(f"Sent with {error_count} errors.")
+      await borg.send_message(logs_id, f"{error_count} Errors")
+
   
 @borg.on(admin_cmd("forward ?(.*)"))
 async def _(event):
