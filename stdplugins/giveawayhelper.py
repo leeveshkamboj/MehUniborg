@@ -21,6 +21,7 @@ async def _(event):
   if event.reply_to_msg_id:
     previous_message = await event.get_reply_message()
     message = previous_message.message
+  error = 0
   for chat_id in channel.keys():
     try:
       await borg.send_message(chat_id, message)
@@ -29,7 +30,9 @@ async def _(event):
       try:
         client.forward_messages(entity, previous_message)
         await borg.send_message(logs_id, f"Message sent at {channel[chat_id]} ({chat_id}) successfully.")
-      except:
-        await borg.send_message(logs_id, error_msg)
+      except Exception as error:
+        await borg.send_message(logs_id, "Error! " + error)
+        error+=1
+  await borg.send_message(logs_id, "Error! " + error)
 
 #client.send_message(chat_ids, message)
