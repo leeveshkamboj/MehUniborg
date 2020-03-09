@@ -45,7 +45,7 @@ async def _(event):
     return
   error_count = 0
   sent_count = 0
-  event.edit("Sending...)
+  await event.edit("Sending...")
   input_str = event.pattern_match.group(1)
   if event.reply_to_msg_id:
     previous_message = await event.get_reply_message()
@@ -89,6 +89,7 @@ async def _(event):
 async def _(event): 
   if event.fwd_from:
     return
+  await event.edit("Sending...")
   error_count = 0
   sent_count = 0 
   input_str = event.pattern_match.group(1)
