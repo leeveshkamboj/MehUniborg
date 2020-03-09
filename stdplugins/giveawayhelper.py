@@ -23,7 +23,7 @@ async def _(event):
     if previous_message.photo:
       file = await borg.download_file(previous_message.media)
       uploaded_sticker = await borg.upload_file(file, file_name="img.png")
-      await bot_conv.send_file(
+      await borg.send_file(
                     InputMediaUploadedDocument(
                         file=uploaded_sticker,
                         mime_type='image/png',
