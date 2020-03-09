@@ -6,6 +6,7 @@ from telethon.tl.types import (
     DocumentAttributeFilename,
     DocumentAttributeSticker,
     InputMediaUploadedDocument,
+    InputMediaUploadedPhoto,
     InputPeerNotifySettings,
     InputStickerSetID,
     InputStickerSetShortName,
@@ -30,21 +31,15 @@ async def _(event):
     previous_message = await event.get_reply_message()
     if previous_message.photo:
       file = await borg.download_file(previous_message.media)
-      uploaded_sticker = await borg.upload_file(file, file_name="img.png")
+      uploaded_img = await borg.upload_file(file, file_name="img.png")
       for chat_id in channel.keys():
-        async with borg.conversation(chat_id) as bot_conv:
-            await bot_conv.send_file(
-                                InputMediaUploadedDocument(
-                                    file=uploaded_sticker,
-                                    mime_type='image/png',
-                                    attributes=[
-                                        DocumentAttributeFilename(
-                                            "img.png"
-                                        )
-                                    ]
-                                ),
-                                force_document=False
-                            )
+        await borg.send_file(
+                              InputMediaUploadedPhoto(
+                                  chat_id,
+                                  file=uploaded_img
+                              ),
+                              force_document=False
+                          )
     else:
       raw_text = previous_message.text
       error_count = 0
