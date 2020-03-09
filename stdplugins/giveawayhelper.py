@@ -31,7 +31,9 @@ async def _(event):
     if previous_message.photo:
       file = await borg.download_file(previous_message.media)
       uploaded_sticker = await borg.upload_file(file, file_name="img.png")
-      await borg.send_file(
+      for chat_id in channel.keys():
+        await borg.send_file(
+                        chat_id,
                     InputMediaUploadedDocument(
                         file=uploaded_sticker,
                         mime_type='image/png',
@@ -40,8 +42,7 @@ async def _(event):
                                 "img.png"
                             )
                         ]
-                    ),
-                    force_document=True
+                    )
                 )
     else:
       raw_text = previous_message.text
