@@ -28,7 +28,7 @@ async def _(event):
       await borg.send_message(logs_id, f"{message} sent at {channel[chat_id]} ({chat_id}) successfully.")
     except:
       try:
-        borg.forward_messages(entity, previous_message)
+        borg.forward_messages(chat_id, previous_message)
         await borg.send_message(logs_id, f"Message sent at {channel[chat_id]} ({chat_id}) successfully.")
       except Exception as error:
         await borg.send_message(logs_id, "Error! " + str(error))
