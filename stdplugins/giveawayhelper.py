@@ -2,7 +2,15 @@ import asyncio
 import datetime
 from telethon import events
 from uniborg.util import admin_cmd
-
+from telethon.tl.types import (
+    DocumentAttributeFilename,
+    DocumentAttributeSticker,
+    InputMediaUploadedDocument,
+    InputPeerNotifySettings,
+    InputStickerSetID,
+    InputStickerSetShortName,
+    MessageMediaPhoto
+)
 
 channel = {-1001191913647: "Trash"}
 logs_id = -411442681
