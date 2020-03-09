@@ -34,8 +34,9 @@ async def _(event):
       uploaded_img = await borg.upload_file(file, file_name="img.png")
       for chat_id in channel.keys():
         await borg.send_file(
+                              chat_id,
                               InputMediaUploadedPhoto(
-                                  chat_id,
+                                  
                                   file=uploaded_img
                               ),
                               force_document=False
