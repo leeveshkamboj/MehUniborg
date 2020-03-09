@@ -13,7 +13,24 @@ from telethon.tl.types import (
     MessageMediaPhoto
 )
 
-channel = {-1001191913647 : "Trash", -1001469149410 : "@WWMethLabs", 1302017626 : "@bulbagiveaways"}
+channel = {
+            -1001191913647 : "Trash", -1001469149410 : "@WWMethLabs", 1302017626 : "@bulbagiveaways",
+            1461820250 : "@T3L3FAM", 1398471558 : "fsocietypremium", 1185965787 : "@jusicegiveaway",
+            1295042400 : "@ninjahub007", 1275383207 : "@mivislink1", 1180330670 : "@joinforgiveaway",
+            1212694660 : "Dark Giveaways", 1201395264 : "Abnormal bins", 1185741535 : "@BurnCracking",
+            1206921330 : "The Ballad of jesse", 1370345200 : "@legendsassociation", 1336319764: "@dailyhotstargiveaway",
+            1372489330 : "@giveawayjunction", 1210379638 : "@techysihag", 1458513856 : "Netflix's Giveaways",
+            1230938290 : "Reborn Giveaways", 1481743754 : "@royalgiveaways", 1166459724 : "@marvelgiveawayhaker",
+            1434905058 : "Netflix Accounts", 1484944621 : "@paulinasworld", 1311532625 : "@PremiumAccountGiveaway",
+            1397629501 : "@thepremiumcracker", 1439458337 : "@TeampoionXD", 1446541060 : "@crackingarmy",
+            1245370939 : "@giveawayaccountsAJ", 1372335147 : "@techymast", 1309721959 : "@giveaway_24hrs",
+            1186776124 : "@netflixaccc", 1351220732 : "@crazyarmygames", 1336950662 : "@joinhereforgibaways",
+            1263822220 : "@sam9086", 1456736802 : "@theoggyworld", 223462655 : "@mavericgiveaway",
+            1432006231 :"Direct zone", 1404962771 : "@ppremium_giveaways", 1336950662 : "@joinhereforgibaways",
+            1219885001 : "@freechannelsforall", 1409761529 : "@phoenixgang", 1289688851 : "@error69club",
+            1423183267 : "@androidapk_mod", 1437719131 : "@vmhack", 1236770095 : "@liveismylife",
+            1364162634 : "@fir3club"
+          }
 logs_id = -411442681
 
 
