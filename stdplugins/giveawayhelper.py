@@ -24,11 +24,11 @@ async def _(event):
   for chat_id in channel.keys():
     try:
       await borg.send_message(chat_id, message)
-      await borg.send_message(logs_id, f"{message} sent at {channel[chat_id]} ([{chat_id}]("t.me/"+chat_id)) successfully.")
+      await borg.send_message(logs_id, f"{message} sent at {channel[chat_id]} ([{chat_id}](t.me/+{chat_id)}) successfully.")
     except:
       try:
         client.forward_messages(entity, previous_message)
-        await borg.send_message(logs_id, f"Message sent at {channel[chat_id]} ([{chat_id}]("t.me/"+chat_id)) successfully.")
+        await borg.send_message(logs_id, f"Message sent at {channel[chat_id]} ({chat_id}) successfully.")
       except:
         await borg.send_message(logs_id, error_msg)
 
