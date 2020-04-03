@@ -38,7 +38,7 @@ async def lydia_disable_enable(event):
         reply_msg = await event.get_reply_message()
         user_id = reply_msg.from_id
         chat_id = event.chat_id
-        await event.edit("hoi")
+        await event.edit("Hello")
         if input_str == "e":
             # Create a new chat session (Like a conversation)
             session = lydia.create_session()
