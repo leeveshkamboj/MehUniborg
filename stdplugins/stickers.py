@@ -118,7 +118,7 @@ async def _(event):
     await event.edit(f"Sticker added to [your](tg://user?id={userid}) pack [here](t.me/addstickers/{packshortname})")
 
     
-@borg.on(admin_cmd("kang2 ?(.*)"))
+@borg.on(admin_cmd("2kang ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
