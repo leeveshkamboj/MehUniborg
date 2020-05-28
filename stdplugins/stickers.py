@@ -137,7 +137,7 @@ async def _(event):
     userid = event.from_id
     if userid == 630654925:
         packname = "@WWMethLabs"
-        packshortname = "@WWMethLabs"  
+        packshortname = "stickerpackofwwmethlabs"  
     else:
         packname = f"{userid}'s 2nd @DraXCommunity Pack"
         packshortname = f"DraXCommunity_{userid}_2nd"  # format: Uni_Borg_userid
