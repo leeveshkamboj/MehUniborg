@@ -22,7 +22,7 @@ async def _(event):
         
         
         
-@borg.on(admin_cmd("get_id"))
+@borg.on(admin_cmd("info"))
 async def _(event):
     if event.fwd_from:
         return
