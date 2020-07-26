@@ -98,26 +98,25 @@ async def _(event):
 async def add_ch(event):
     if event.fwd_from:
         return
-    chat = await event.get_chat()
-    if not in_channels(chat.id):
-        add_channel(chat.id)
-        await event.edit(f"`{chat.id} added to database!`")
-#         await asyncio.sleep(3)
-#         await event.delete()
+    chat_id = event.chat_id
+    if not in_channels(chat_id):
+        add_channel(chat_id)
+        await event.edit("`Added to database!`")
+        await asyncio.sleep(3)
+        await event.delete()
 
 @borg.on(admin_cmd("rm ?(.*)"))
 async def remove_ch(event):
     if event.fwd_from:
         return
     chat_id = event.pattern_match.group(1)
-    chat = await event.get_chat()
     if in_channels(chat_id):
         rm_channel(chat_id)
         await event.edit("Removed from database")
         await asyncio.sleep(3)
         await event.delete()
-    elif in_channels(chat.id):
-        rm_channel(chat.id)
+    elif in_channels(event.chat_id):
+        rm_channel(event.chat_id)
         await event.edit("Removed from database")
         await asyncio.sleep(3)
         await event.delete()
