@@ -100,6 +100,7 @@ async def add_ch(event):
         return
     chat = await event.get_chat()
     if not in_channels(chat.id):
+        await borg.send_message(logs_id, chat.id)
         add_channel(chat.id)
         await event.edit("`Added to database!`")
         await asyncio.sleep(3)
@@ -109,8 +110,14 @@ async def add_ch(event):
 async def remove_ch(event):
     if event.fwd_from:
         return
+    chat_id = event.pattern_match.group(1)
     chat = await event.get_chat()
-    if in_channels(chat.id):
+    if in_channels(chat_id):
+        rm_channel(chat_id)
+        await event.edit("Removed from database")
+        await asyncio.sleep(3)
+        await event.delete()
+    elif in_channels(chat.id):
         rm_channel(chat.id)
         await event.edit("Removed from database")
         await asyncio.sleep(3)
@@ -123,7 +130,7 @@ async def list(event):
     channels = get_all_channels()
     msg = "Channels in database:\n"
     for channel in channels:
-        msg += f"-{channel.chat_id})\n"
+        msg += f"-{channel.chat_id}\n"
     if len(msg) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(msg)) as out_file:
             out_file.name = "channels.text"
