@@ -123,8 +123,8 @@ async def list(event):
     channels = get_all_channels()
     msg = "Channels in database:\n"
     for channel in channels:
-        APPROVED_PMs += f"-{channel.chat_id})\n"
-    if len(APPROVED_PMs) > Config.MAX_MESSAGE_SIZE_LIMIT:
+        msg += f"-{channel.chat_id})\n"
+    if len(msg) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(msg)) as out_file:
             out_file.name = "channels.text"
             await borg.send_file(
