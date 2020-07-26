@@ -96,4 +96,4 @@ async def _(event):
   await borg.send_message(logs_id, f"{error_count} Errors")
 
 
-client.send_message(chat_ids, message)
+# client.send_message(chat_ids, message)
