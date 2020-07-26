@@ -55,7 +55,7 @@ async def _(event):
           await event.edit("fSent : {sent_count}\nError : {error_count}")
     else:
       raw_text = previous_message.text
-      for chat_id in channel):
+      for chat_id in channel:
         try:
           await borg.send_message(chat_id, raw_text)
           sent_count += 1
