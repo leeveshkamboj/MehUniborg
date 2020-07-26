@@ -95,23 +95,23 @@ async def _(event):
   await borg.send_message(logs_id, f"{error_count} Errors")
     
 @borg.on(admin_cmd("add ?(.*)"))
-async def add_channel(event):
+async def add_ch(event):
     if event.fwd_from:
         return
     chat = await event.get_chat()
     if not in_channels(chat.id):
-        await add_channel(chat.id)
+        add_channel(chat.id)
         await event.edit("`Added to database!`")
         await asyncio.sleep(3)
         await event.delete()
 
 @borg.on(admin_cmd("rm ?(.*)"))
-async def remove_channel(event):
+async def remove_ch(event):
     if event.fwd_from:
         return
     chat = await event.get_chat()
     if in_channels(chat.id):
-        await rm_channel(chat.id)
+        rm_channel(chat.id)
         await event.edit("Removed from database")
         await asyncio.sleep(3)
         await event.delete()
