@@ -100,7 +100,7 @@ async def add_channel(event):
         return
     chat = await event.get_chat()
     if not in_channels(chat.id):
-        add_channel(chat.id)
+        await add_channel(chat.id)
         await event.edit("`Added to database!`")
         await asyncio.sleep(3)
         await event.delete()
@@ -111,7 +111,7 @@ async def remove_channel(event):
         return
     chat = await event.get_chat()
     if in_channels(chat.id):
-        rm_channel(chat.id)
+        await rm_channel(chat.id)
         await event.edit("Removed from database")
         await asyncio.sleep(3)
         await event.delete()
