@@ -12,7 +12,7 @@ from telethon.tl.types import (
     InputStickerSetShortName,
     MessageMediaPhoto
 )
-channel = [-1001191913647]
+channel = [-1001191913647, -447105382]
 logs_id = -411442681
 
 
@@ -53,6 +53,8 @@ async def _(event):
           await borg.send_message(logs_id, "Error! " + str(error))
           error_count += 1
           await event.edit("fSent : {sent_count}\nError : {error_count}")
+      await event.edit(f"{sent_count} messages sent with {error_count} errors.")
+      await borg.send_message(logs_id, f"{error_count} Errors")        
     else:
       raw_text = previous_message.text
       for chat_id in channel:
