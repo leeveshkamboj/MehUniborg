@@ -35,7 +35,7 @@ async def _(event):
       for channel in channels:
         try:
           await borg.send_file(
-                                chat_id,
+                                int(channel.chat_id),
                                 InputMediaUploadedPhoto(
 
                                     file=uploaded_img
@@ -56,7 +56,7 @@ async def _(event):
       raw_text = previous_message.text
       for channel in channels:
         try:
-          await borg.send_message(channel.chat_id, raw_text)
+          await borg.send_message(int(channel.chat_id), raw_text)
           sent_count += 1
           await event.edit(f"Sent : {sent_count}\nError : {error_count}")
         except Exception as error:
@@ -83,7 +83,7 @@ async def _(event):
   error_count = 0
   for channel in channels:
     try:
-      await borg.forward_messages(channel.chat_id, previous_message)
+      await borg.forward_messages(int(channel.chat_id), previous_message)
       sent_count += 1
       await event.edit(f"Sent : {sent_count}\nError : {error_count}")
     except Exception as error:
@@ -128,7 +128,7 @@ async def list(event):
     channels = get_all_channels()
     msg = "Channels in database:\n"
     for channel in channels:
-        msg += f"-{channel.chat_id}\n"
+        msg += f"=>{channel.chat_id}\n"
     if len(msg) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(msg)) as out_file:
             out_file.name = "channels.text"
