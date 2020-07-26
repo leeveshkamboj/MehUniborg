@@ -100,11 +100,10 @@ async def add_ch(event):
         return
     chat = await event.get_chat()
     if not in_channels(chat.id):
-        await borg.send_message(logs_id, chat.id)
         add_channel(chat.id)
-        await event.edit("`Added to database!`")
-        await asyncio.sleep(3)
-        await event.delete()
+        await event.edit(f"`{chat.id} added to database!`")
+#         await asyncio.sleep(3)
+#         await event.delete()
 
 @borg.on(admin_cmd("rm ?(.*)"))
 async def remove_ch(event):
