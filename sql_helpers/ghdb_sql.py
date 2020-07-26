@@ -22,7 +22,7 @@ def in_channels(chat_id):
         SESSION.close()
 
 
-def add_channel(chat_id, reason):
+def add_channel(chat_id):
     adder = ghdb(str(chat_id))
     SESSION.add(adder)
     SESSION.commit()
