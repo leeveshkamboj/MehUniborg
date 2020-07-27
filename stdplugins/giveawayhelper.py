@@ -117,7 +117,8 @@ async def remove_ch(event):
         channels = get_all_channels()
         for channel in channels:
             rm_channel(channel.chat_id)
-        await event.edit("Database cleared.)
+        await event.edit("Database cleared.")
+        return
         
     if in_channels(chat_id):
         rm_channel(chat_id)
