@@ -17,6 +17,41 @@ from sql_helpers.ghdb_sql import in_channels, add_channel, rm_channel, get_all_c
 logs_id = -411442681
 
 
+@borg.on(admin_cmd("forward ?(.*)"))
+
+async def forw(event): 
+  if event.fwd_from:
+    return
+  channels = get_all_channels()
+  await event.edit("Sending...")
+  error_count = 0
+  sent_count = 0 
+  if event.reply_to_msg_id:
+    previous_message = await event.get_reply_message()
+    message = previous_message.message
+    raw_text = previous_message.raw_text
+  error_count = 0
+  for channel in channels:
+    try:
+      await borg.forward_messages(int(channel.chat_id), previous_message)
+      sent_count += 1
+      await event.edit(f"Sent : {sent_count}\nError : {error_count}")
+    except Exception as error:
+      try:
+        await borg.send_message(logs_id, f"Error in sending at {channel.chat_id}.")
+        await borg.send_message(logs_id, "Error! " + str(error))
+      except:
+        pass
+      error_count+=1
+      await event.edit(f"Sent : {sent_count}\nError : {error_count}")
+  await event.edit(f"{sent_count} messages sent with {error_count} errors.")
+  if error_count > 0:
+    try:
+        await borg.send_message(logs_id, f"{error_count} Errors")
+    except:
+        pass
+    
+    
 @borg.on(admin_cmd("send ?(.*)"))
 
 async def _(event):
@@ -28,6 +63,9 @@ async def _(event):
   await event.edit("Sending...")
   if event.reply_to_msg_id:
     previous_message = await event.get_reply_message()
+    if previous_message.sticker:
+        forw(event)
+        return
     if previous_message.photo:
       file = await borg.download_file(previous_message.media)
       uploaded_img = await borg.upload_file(file, file_name="img.png")
@@ -47,12 +85,19 @@ async def _(event):
           sent_count += 1
           await event.edit(f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}")
         except Exception as error:
-          await borg.send_message(logs_id, f"Error in sending at {chat_id}.")
-          await borg.send_message(logs_id, "Error! " + str(error))
+          try:
+            await borg.send_message(logs_id, f"Error in sending at {chat_id}.")
+            await borg.send_message(logs_id, "Error! " + str(error))
+          except:
+            pass
           error_count += 1
           await event.edit(f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}")
       await event.edit(f"{sent_count} messages sent with {error_count} errors.")
-      await borg.send_message(logs_id, f"{error_count} Errors")        
+      if error_count > 0:
+      try:
+        await borg.send_message(logs_id, f"{error_count} Errors")
+      except:
+        pass      
     else:
       raw_text = previous_message.text
       for channel in channels:
@@ -61,41 +106,21 @@ async def _(event):
           sent_count += 1
           await event.edit(f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}")
         except Exception as error:
-          await borg.send_message(logs_id, f"Error in sending at {channel.chat_id}.")
-          await borg.send_message(logs_id, "Error! " + str(error))
+          try:
+            await borg.send_message(logs_id, f"Error in sending at {channel.chat_id}.")
+            await borg.send_message(logs_id, "Error! " + str(error))
+          except:
+            pass
           error_count+=1
           await event.edit(f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}")
       await event.edit(f"{sent_count} messages sent with {error_count} errors.")
-      await borg.send_message(logs_id, f"{error_count} Errors")
+      if error_count > 0:
+        try:
+            await borg.send_message(logs_id, f"{error_count} Errors")
+        except:
+            pass
 
   
-@borg.on(admin_cmd("forward ?(.*)"))
-
-async def _(event): 
-  if event.fwd_from:
-    return
-  channels = get_all_channels()
-  await event.edit("Sending...")
-  error_count = 0
-  sent_count = 0 
-  if event.reply_to_msg_id:
-    previous_message = await event.get_reply_message()
-    message = previous_message.message
-    raw_text = previous_message.raw_text
-  error_count = 0
-  for channel in channels:
-    try:
-      await borg.forward_messages(int(channel.chat_id), previous_message)
-      sent_count += 1
-      await event.edit(f"Sent : {sent_count}\nError : {error_count}")
-    except Exception as error:
-      await borg.send_message(logs_id, f"Error in sending at {channel.chat_id}.")
-      await borg.send_message(logs_id, "Error! " + str(error))
-      error_count+=1
-      await event.edit(f"Sent : {sent_count}\nError : {error_count}")
-  await event.edit(f"{sent_count} messages sent with {error_count} errors.")
-  await borg.send_message(logs_id, f"{error_count} Errors")
-    
 @borg.on(admin_cmd("add ?(.*)"))
 async def add_ch(event):
     if event.fwd_from:
@@ -107,6 +132,7 @@ async def add_ch(event):
         await asyncio.sleep(3)
         await event.delete()
 
+        
 @borg.on(admin_cmd("rm ?(.*)"))
 async def remove_ch(event):
     if event.fwd_from:
@@ -131,6 +157,7 @@ async def remove_ch(event):
         await asyncio.sleep(3)
         await event.delete()
 
+        
 @borg.on(admin_cmd("listchannels"))
 async def list(event):
     if event.fwd_from:
