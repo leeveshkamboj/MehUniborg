@@ -36,7 +36,7 @@ async def forw(event):
     try:
       await borg.forward_messages(int(channel.chat_id), previous_message)
       sent_count += 1
-      await event.edit(f"Sent : {sent_count}\nError : {error_count}")
+      await event.edit(f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}")
     except Exception as error:
       try:
         await borg.send_message(logs_id, f"Error in sending at {channel.chat_id}.")
@@ -91,7 +91,6 @@ async def _(event):
 
                                     file=uploaded_doc
                                 ),
-                                force_document=False,
                                 caption = raw_text,
                                 link_preview = False
                             )
