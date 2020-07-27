@@ -151,8 +151,12 @@ async def add_ch(event):
         lines = raw_text.split("\n")
         length = len(lines)
         for line_number in range(1, length - 1):
-            rm_channel(lines[line_number][3:])
+            channel_id = lines[line_number][3:]
+            if not in_channels(channel_id):
+                add_channel(channel_id)
         await event.edit("Channels added!")
+        await asyncio.sleep(3)
+        await event.delete()
         return
     chat_id = event.chat_id
     if int(chat_id) == logs_id:
