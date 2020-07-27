@@ -44,12 +44,12 @@ async def _(event):
                                 caption = raw_text
                             )
           sent_count += 1
-          await event.edit(f"Sent : {sent_count}\nError : {error_count}")
+          await event.edit(f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}")
         except Exception as error:
           await borg.send_message(logs_id, f"Error in sending at {chat_id}.")
           await borg.send_message(logs_id, "Error! " + str(error))
           error_count += 1
-          await event.edit("fSent : {sent_count}\nError : {error_count}")
+          await event.edit(f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}")
       await event.edit(f"{sent_count} messages sent with {error_count} errors.")
       await borg.send_message(logs_id, f"{error_count} Errors")        
     else:
@@ -58,17 +58,17 @@ async def _(event):
         try:
           await borg.send_message(int(channel.chat_id), raw_text)
           sent_count += 1
-          await event.edit(f"Sent : {sent_count}\nError : {error_count}")
+          await event.edit(f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}")
         except Exception as error:
           await borg.send_message(logs_id, f"Error in sending at {channel.chat_id}.")
           await borg.send_message(logs_id, "Error! " + str(error))
           error_count+=1
-          await event.edit(f"Sent : {sent_count}\nError : {error_count}")
+          await event.edit(f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}")
       await event.edit(f"{sent_count} messages sent with {error_count} errors.")
       await borg.send_message(logs_id, f"{error_count} Errors")
 
   
-@borg.on(admin_cmd("forward ?(.*)"))
+@borg.on(admin_cmd("forward ?(.*)await event.edit(f"Sent : {sent_count}Error : {error_count}")"))
 async def _(event): 
   if event.fwd_from:
     return
@@ -110,6 +110,13 @@ async def remove_ch(event):
     if event.fwd_from:
         return
     chat_id = event.pattern_match.group(1)
+    if chat_id == "all":
+        await event.edit("Removing...")
+        channels = get_all_channels()
+        for channel in channels:
+            rm_channel(channel.chat_id)
+        await event.edit("Database cleared.)
+        
     if in_channels(chat_id):
         rm_channel(chat_id)
         await event.edit("Removed from database")
@@ -129,6 +136,7 @@ async def list(event):
     msg = "Channels in database:\n"
     for channel in channels:
         msg += f"=>{channel.chat_id}\n"
+    msg += f"\nTotal {len(channels)} channels."
     if len(msg) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(msg)) as out_file:
             out_file.name = "channels.text"
