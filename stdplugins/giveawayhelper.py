@@ -76,6 +76,9 @@ async def _(event):
     if previous_message.sticker or previous_message.poll:
         await event.edit("Reply .forward for stickers and polls.")
         return
+    if previous_message.gif:
+        await event.edit("Not supported.")
+        return
     if previous_message.photo or previous_message.document:
       file = await borg.download_file(previous_message.media)
       uploaded_doc = await borg.upload_file(file, file_name="img.png")
