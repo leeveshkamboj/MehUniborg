@@ -56,7 +56,7 @@ async def forw(event):
     try:
         await borg.send_message(logs_id, f"{error_count} Errors")
     except:
-        pass
+        await event.edit("Set up log channel for checking errors.")
     
     
 @borg.on(admin_cmd("send ?(.*)"))
