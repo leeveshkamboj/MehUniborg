@@ -14,7 +14,8 @@ from telethon.tl.types import (
 )
 from sql_helpers.ghdb_sql import in_channels, add_channel, rm_channel, get_all_channels
 
-logs_id = -411442681
+logs_id = Config.LOG_ID
+
 
 
 @borg.on(admin_cmd("forward ?(.*)"))
