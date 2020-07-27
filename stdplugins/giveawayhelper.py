@@ -24,7 +24,7 @@ async def forw(event):
   if event.fwd_from:
     return
   if not event.is_reply:
-    event.edit("Reply to a message to broadcast.")
+    await event.edit("Reply to a message to broadcast.")
     return
   channels = get_all_channels()
   await event.edit("Sending...")
@@ -65,7 +65,7 @@ async def _(event):
   if event.fwd_from:
         return
   if not event.is_reply:
-    event.edit("Reply to a message to broadcast.")
+    await event.edit("Reply to a message to broadcast.")
     return
   channels = get_all_channels()
   error_count = 0
@@ -135,7 +135,7 @@ async def _(event):
         try:
             await borg.send_message(logs_id, f"{error_count} Errors")
         except:
-            pass
+            await event.edit("Set up log channel for checking errors.")
 
   
 @borg.on(admin_cmd("add ?(.*)"))
