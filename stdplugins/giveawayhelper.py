@@ -14,8 +14,7 @@ from telethon.tl.types import (
 )
 from sql_helpers.ghdb_sql import in_channels, add_channel, rm_channel, get_all_channels
 
-# logs_id = Config.LOG_ID
-logs_id = 0
+logs_id = Config.LOG_ID
 
 
 
@@ -66,7 +65,7 @@ async def _(event):
   if event.reply_to_msg_id:
     previous_message = await event.get_reply_message()
     if previous_message.sticker or previous_message.poll:
-        forw(event)
+        await forw(event)
         return
     if previous_message.photo or previous_message.document:
       file = await borg.download_file(previous_message.media)
