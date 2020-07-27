@@ -145,8 +145,17 @@ async def _(event):
 async def add_ch(event):
     if event.fwd_from:
         return
+    if event.reply_to_msg_id:
+        previous_message = await event.get_reply_message()
+        raw_text = previous_message.text
+        lines = raw_text.split("\n")
+        length = len(lines)
+        for line_number in range(1, length - 1):
+            rm_channel(lines[line_number][3:])
+        await event.edit("Channels added!")
+        return
     chat_id = event.chat_id
-    if int(chat_id) == int(borg.get_me.id):
+    if int(chat_id) == logs_id:
         return
     if not in_channels(chat_id):
         add_channel(chat_id)
