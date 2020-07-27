@@ -146,7 +146,10 @@ async def add_ch(event):
     if event.fwd_from:
         return
     chat_id = event.chat_id
-    if chat_id == borg.get_me:
+    if int(chat_id) == int(borg.get_me):
+        return
+    else:
+        await event.edit(str(chat_id) + str(borg.get_me))
         return
     if not in_channels(chat_id):
         add_channel(chat_id)
