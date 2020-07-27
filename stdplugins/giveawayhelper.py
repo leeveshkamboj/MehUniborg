@@ -69,7 +69,8 @@ async def _(event):
       await borg.send_message(logs_id, f"{error_count} Errors")
 
   
-@borg.on(admin_cmd("forward ?(.*)await event.edit(f"Sent : {sent_count}Error : {error_count}")"))
+@borg.on(admin_cmd("forward ?(.*)"))
+
 async def _(event): 
   if event.fwd_from:
     return
