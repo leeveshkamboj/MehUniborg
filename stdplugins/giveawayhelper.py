@@ -41,7 +41,8 @@ async def _(event):
                                     file=uploaded_img
                                 ),
                                 force_document=False,
-                                caption = raw_text
+                                caption = raw_text,
+                                link_preview = False
                             )
           sent_count += 1
           await event.edit(f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}")
@@ -56,7 +57,7 @@ async def _(event):
       raw_text = previous_message.text
       for channel in channels:
         try:
-          await borg.send_message(int(channel.chat_id), raw_text)
+          await borg.send_message(int(channel.chat_id), raw_text, link_preview = False)
           sent_count += 1
           await event.edit(f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}")
         except Exception as error:
