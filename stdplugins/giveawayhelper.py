@@ -148,8 +148,12 @@ async def add_ch(event):
         await event.edit("`Added to database!`")
         await asyncio.sleep(3)
         await event.delete()
+    elif in_channels(chat_id):
+	await event.edit("`Channel is already is database!`")
+        await asyncio.sleep(3)
+        await event.delete()
 
-        
+
 @borg.on(admin_cmd("rm ?(.*)"))
 async def remove_ch(event):
     if event.fwd_from:
@@ -173,7 +177,10 @@ async def remove_ch(event):
         await event.edit("Removed from database")
         await asyncio.sleep(3)
         await event.delete()
-
+    elif not in_channels(event.chat_id):
+	await event.edit("Channel is already removed from database. ")
+        await asyncio.sleep(3)
+        await event.delete()
         
 @borg.on(admin_cmd("listchannels"))
 async def list(event):
@@ -182,7 +189,7 @@ async def list(event):
     channels = get_all_channels()
     msg = "Channels in database:\n"
     for channel in channels:
-        msg += f"=> {channel.chat_id}\n"
+        msg += f"=> `{channel.chat_id}`\n"
     msg += f"\nTotal {len(channels)} channels."
     if len(msg) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(msg)) as out_file:
@@ -198,4 +205,4 @@ async def list(event):
             await event.delete()
     else:
         await event.edit(msg)
-# client.send_message(chat_ids, message)
+
