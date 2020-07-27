@@ -1,3 +1,5 @@
+# Written by @HeisenbergTheDanger (Keep credits else gay)
+
 import asyncio
 import datetime
 from telethon import events
@@ -76,8 +78,8 @@ async def _(event):
     if previous_message.sticker or previous_message.poll:
         await event.edit("Reply .forward for stickers and polls.")
         return
-    if previous_message.gif:
-        await event.edit("Not supported.")
+    if previous_message.gif or previous_message.audio or previous_message.voice or previous_message.video or previous_message.video_note or previous_message.contact or previous_message.game or  or previous_message.geo or previous_message.invoice:          # Written by @HeisenbergTheDanger
+        await event.edit("Not supported. Try .forward")
         return
     if previous_message.photo or previous_message.document:
       file = await borg.download_file(previous_message.media)
@@ -140,6 +142,7 @@ async def _(event):
         except:
             await event.edit("Set up log channel for checking errors.")
 
+# Written by @HeisenbergTheDanger
   
 @borg.on(admin_cmd("add ?(.*)"))
 async def add_ch(event):
