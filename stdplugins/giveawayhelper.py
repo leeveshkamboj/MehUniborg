@@ -151,7 +151,7 @@ async def add_ch(event):
         raw_text = previous_message.text
         lines = raw_text.split("\n")
         length = len(lines)
-        for line_number in range(1, length - 1):
+        for line_number in range(1, length - 2):
             channel_id = lines[line_number][4:-1]
             if not in_channels(channel_id):
                 add_channel(channel_id)
