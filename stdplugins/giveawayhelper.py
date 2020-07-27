@@ -67,22 +67,35 @@ async def _(event):
     if previous_message.sticker:
         forw(event)
         return
-    if previous_message.photo:
+    if previous_message.photo or previous_message.document:
       file = await borg.download_file(previous_message.media)
-      uploaded_img = await borg.upload_file(file, file_name="img.png")
+      uploaded_doc = await borg.upload_file(file, file_name="img.png")
       raw_text = previous_message.text
       for channel in channels:
         try:
-          await borg.send_file(
+            if previous_message.photo:
+                await borg.send_file(
                                 int(channel.chat_id),
                                 InputMediaUploadedPhoto(
 
-                                    file=uploaded_img
+                                    file=uploaded_doc
                                 ),
                                 force_document=False,
                                 caption = raw_text,
                                 link_preview = False
                             )
+            elif previous_message.document:
+                await borg.send_file(
+                                int(channel.chat_id),
+                                InputMediaUploadedDocument(
+
+                                    file=uploaded_doc
+                                ),
+                                force_document=False,
+                                caption = raw_text,
+                                link_preview = False
+                            )
+        
           sent_count += 1
           await event.edit(f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}")
         except Exception as error:
@@ -95,10 +108,10 @@ async def _(event):
           await event.edit(f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}")
       await event.edit(f"{sent_count} messages sent with {error_count} errors.")
       if error_count > 0:
-      try:
-        await borg.send_message(logs_id, f"{error_count} Errors")
-      except:
-        pass      
+        try:
+            await borg.send_message(logs_id, f"{error_count} Errors")
+        except:
+            pass      
     else:
       raw_text = previous_message.text
       for channel in channels:
