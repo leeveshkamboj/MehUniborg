@@ -77,7 +77,6 @@ async def _(event):
                 await borg.send_file(
                                 int(channel.chat_id),
                                 InputMediaUploadedPhoto(
-
                                     file=uploaded_doc
                                 ),
                                 force_document=False,
@@ -88,15 +87,14 @@ async def _(event):
                 await borg.send_file(
                                 int(channel.chat_id),
                                 InputMediaUploadedDocument(
-
                                     file=uploaded_doc
                                 ),
                                 caption = raw_text,
                                 link_preview = False
                             )
         
-          sent_count += 1
-          await event.edit(f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}")
+            sent_count += 1
+            await event.edit(f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}")
         except Exception as error:
           try:
             await borg.send_message(logs_id, f"Error in sending at {chat_id}.")
