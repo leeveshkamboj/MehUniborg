@@ -136,7 +136,7 @@ async def list(event):
     channels = get_all_channels()
     msg = "Channels in database:\n"
     for channel in channels:
-        msg += f"=>{channel.chat_id}\n"
+        msg += f"=> {channel.chat_id}\n"
     msg += f"\nTotal {len(channels)} channels."
     if len(msg) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(msg)) as out_file:
