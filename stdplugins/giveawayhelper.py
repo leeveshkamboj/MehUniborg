@@ -64,7 +64,7 @@ async def _(event):
   await event.edit("Sending...")
   if event.reply_to_msg_id:
     previous_message = await event.get_reply_message()
-    if previous_message.sticker:
+    if previous_message.sticker or previous_message.poll:
         forw(event)
         return
     if previous_message.photo or previous_message.document:
