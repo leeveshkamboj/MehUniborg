@@ -178,7 +178,7 @@ async def remove_ch(event):
         await asyncio.sleep(3)
         await event.delete()
     elif not in_channels(event.chat_id):
-	await event.edit("Channel is already removed from database. ")
+        await event.edit("Channel is already removed from database. ")
         await asyncio.sleep(3)
         await event.delete()
         
