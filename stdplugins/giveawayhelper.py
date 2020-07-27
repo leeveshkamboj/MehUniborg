@@ -146,12 +146,13 @@ async def add_ch(event):
     if event.fwd_from:
         return
     if event.reply_to_msg_id:
+        await event.edit("Adding...")
         previous_message = await event.get_reply_message()
         raw_text = previous_message.text
         lines = raw_text.split("\n")
         length = len(lines)
         for line_number in range(1, length - 1):
-            channel_id = lines[line_number][3:]
+            channel_id = lines[line_number][4:-2]
             if not in_channels(channel_id):
                 add_channel(channel_id)
         await event.edit("Channels added!")
