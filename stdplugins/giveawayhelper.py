@@ -149,7 +149,7 @@ async def add_ch(event):
         await asyncio.sleep(3)
         await event.delete()
     elif in_channels(chat_id):
-	await event.edit("`Channel is already is database!`")
+        await event.edit("`Channel is already is database!`")
         await asyncio.sleep(3)
         await event.delete()
 
