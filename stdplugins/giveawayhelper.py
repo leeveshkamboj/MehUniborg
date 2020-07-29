@@ -82,6 +82,7 @@ async def _(event):
         await event.edit("Not supported. Try .forward")
         return
     if previous_message.document:
+        return
         data = await client.download_file(previous_message.document, bytes)
         print(data[:16])
     elif not previous_message.web_preview and previous_message.photo:
