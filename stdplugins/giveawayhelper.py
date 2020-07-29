@@ -78,10 +78,13 @@ async def _(event):
     if previous_message.sticker or previous_message.poll:
         await event.edit("Reply .forward for stickers and polls.")
         return
-    if previous_message.gif or previous_message.document or previous_message.audio or previous_message.voice or previous_message.video or previous_message.video_note or previous_message.contact or previous_message.game or previous_message.geo or previous_message.invoice:          # Written by @HeisenbergTheDanger
+    if previous_message.gif or previous_message.audio or previous_message.voice or previous_message.video or previous_message.video_note or previous_message.contact or previous_message.game or previous_message.geo or previous_message.invoice:          # Written by @HeisenbergTheDanger
         await event.edit("Not supported. Try .forward")
         return
-    if not previous_message.web_preview and previous_message.photo:
+    if previous_message.document:
+        data = await client.download_file(previous_message.document, bytes)
+        print(data[:16])
+    elif not previous_message.web_preview and previous_message.photo:
       file = await borg.download_file(previous_message.media)
       uploaded_doc = await borg.upload_file(file, file_name="img.png")
       raw_text = previous_message.text
