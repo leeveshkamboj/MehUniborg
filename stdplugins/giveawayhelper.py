@@ -232,3 +232,9 @@ async def list(event):
     else:
         await event.edit(msg)
 
+@borg.on(admin_cmd("search ?(.*)"))
+async def search(event):
+    channel_id = = event.pattern_match.group(1)
+    channel = await client.get_entity(channel_id)
+    name = utils.get_display_name(channel)
+    await event.edit(f"Name : {name}")
