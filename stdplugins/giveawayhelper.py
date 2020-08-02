@@ -3,8 +3,7 @@
 import asyncio
 import datetime
 from telethon import events
-import uniborg.util
-from uniborg.util import admin_cmd
+from uniborg.util import admin_cmd, get_display_name
 from telethon.tl.types import (
     DocumentAttributeFilename,
     DocumentAttributeSticker,
