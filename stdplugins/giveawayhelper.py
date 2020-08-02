@@ -241,4 +241,6 @@ async def search(event):
         await event.edit("Invalid id.")
     name = channel.title
     username = channel.username
+    if username:
+        username = "@" + username
     await event.edit(f"Name : {name}\nUsername: {username}")
