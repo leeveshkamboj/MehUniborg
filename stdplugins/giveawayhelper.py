@@ -53,7 +53,7 @@ async def forw(event):
       except:
         pass
       error_count+=1
-      await event.edit(f"Sent : {sent_count}\nError : {error_count}")
+      await event.edit(f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}")
   await event.edit(f"{sent_count} messages sent with {error_count} errors.")
   if error_count > 0:
     try:
@@ -237,7 +237,7 @@ async def list(event):
 async def search(event):
     channel_id =  event.pattern_match.group(1)
     try:
-        channel = await borg.get_entity(channel_id)
+        channel = await borg.get_entity(int(channel_id))
     except ValueError:
         await event.edit("Invalid id.")
     name = util.get_display_name(channel)
