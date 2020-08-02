@@ -240,4 +240,5 @@ async def search(event):
     except ValueError:
         await event.edit("Invalid id.")
     name = channel.title
-    await event.edit(f"Name : {name}")
+    username = channel.username
+    await event.edit(f"Name : {name}\nUsername: {username}")
