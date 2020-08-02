@@ -3,6 +3,7 @@
 import asyncio
 import datetime
 from telethon import events
+import uniborg.util
 from uniborg.util import admin_cmd
 from telethon.tl.types import (
     DocumentAttributeFilename,
@@ -235,6 +236,9 @@ async def list(event):
 @borg.on(admin_cmd("search ?(.*)"))
 async def search(event):
     channel_id =  event.pattern_match.group(1)
-    channel = await borg.get_entity(channel_id)
-    name = utils.get_display_name(channel)
+    try:
+        channel = await borg.get_entity(channel_id)
+    except ValueError:
+        await event.edit("Invalid id.")
+    name = util.get_display_name(channel)
     await event.edit(f"Name : {name}")
