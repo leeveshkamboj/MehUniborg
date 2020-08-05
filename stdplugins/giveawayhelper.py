@@ -53,6 +53,9 @@ async def forw(event):
         pass
       error_count+=1
       await event.edit(f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}")
+      if error_count >= 10 and sent_count == 0:
+        await event.edit*("Stopped for too many errors.")
+        return
   await event.edit(f"{sent_count} messages sent with {error_count} errors.")
   if error_count > 0:
     try:
@@ -115,6 +118,9 @@ async def _(event):
             pass
           error_count += 1
           await event.edit(f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}")
+          if error_count >= 10 and sent_count == 0:
+            await event.edit*("Stopped for too many errors.")
+            return      
       await event.edit(f"{sent_count} messages sent with {error_count} errors.")
       if error_count > 0:
         try:
@@ -139,6 +145,9 @@ async def _(event):
             pass
           error_count+=1
           await event.edit(f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}")
+          if error_count >= 10 and sent_count == 0:
+            await event.edit*("Stopped for too many errors.")
+            return
       await event.edit(f"{sent_count} messages sent with {error_count} errors.")
       if error_count > 0:
         try:
