@@ -9,6 +9,14 @@ async def yo(e):
     t = "yo"
     for j in range(15):
         t = t[:-1] + "oo"
+        await e.edit(t)	
+
+
+@borg.on(events.NewMessage(pattern=r"^.oof$", outgoing=True))
+async def yo(e):
+    t = "Oof"
+    for j in range(15):
+        t = t[:-1] + "of"
         await e.edit(t)		      
 
 
