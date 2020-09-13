@@ -66,7 +66,11 @@ async def _(event):
                 tempFedId += x
 
     await event.edit(f"Fbaning in {len(fedList)} feds.")
-    await borg.send_message(chat, f"/start")
+    try:
+        await telebot.send_message(chat, f"/start")
+    except:
+        await event.edit("FBAN_GROUP_ID is incorrect so using current chat id.")
+        chat = await event.get_chat()
     await asyncio.sleep(3)
     if Config.EXCLUDE_FED:
         excludeFed = Config.EXCLUDE_FED.split("|")
