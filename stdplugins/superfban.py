@@ -35,6 +35,7 @@ async def _(event):
     try:
         int(FBAN)
         if int(FBAN) == 630654925 or int(FBAN) == 719195224:
+            await event.edit("Something went wrong.")
             return
     except:
         if FBAN == "@HeisenbergTheDanger" or FBAN == "@xditya":
