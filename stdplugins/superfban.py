@@ -1,6 +1,6 @@
-#  ©2020 borg
+#  ©2020 TeleBot
 #
-# You may not use this plugin without proper authorship and consent from @borgSupport
+# You may not use this plugin without proper authorship and consent from @TeleBotSupport
 #
 
 from telethon import events
