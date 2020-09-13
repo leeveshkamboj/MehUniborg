@@ -1,6 +1,6 @@
-#  ©2020 TeleBot
+#  ©2020 borg
 #
-# You may not use this plugin without proper authorship and consent from @TeleBotSupport
+# You may not use this plugin without proper authorship and consent from @borgSupport
 #
 
 from telethon import events
@@ -29,7 +29,7 @@ async def _(event):
     else:
         chat = await event.get_chat()
     fedList = []
-    async with telebot.conversation("@MissRose_bot") as bot_conv:
+    async with borg.conversation("@MissRose_bot") as bot_conv:
         await bot_conv.send_message("/start")
         await bot_conv.send_message("/myfeds")
         response = await bot_conv.get_response()
@@ -38,7 +38,7 @@ async def _(event):
             await response.click(0)
             fedfile = await bot_conv.get_response()
             if fedfile.media:
-                downloaded_file_name = await telebot.download_media(
+                downloaded_file_name = await borg.download_media(
                 fedfile,
                 "fedlist"
                 )
@@ -66,7 +66,7 @@ async def _(event):
                 tempFedId += x
 
     await event.edit(f"Fbaning in {len(fedList)} feds.")
-    await telebot.send_message(chat, f"/start")
+    await borg.send_message(chat, f"/start")
     await asyncio.sleep(3)
     if Config.EXCLUDE_FED:
         excludeFed = Config.EXCLUDE_FED.split("|")
@@ -75,12 +75,12 @@ async def _(event):
     exCount = 0
     for fed in fedList:
         if Config.EXCLUDE_FED and fed in excludeFed:
-            await telebot.send_message(chat, f"{fed} Excluded.")
+            await borg.send_message(chat, f"{fed} Excluded.")
             exCount += 1
             continue
-        await telebot.send_message(chat, f"/joinfed {fed}")
+        await borg.send_message(chat, f"/joinfed {fed}")
         await asyncio.sleep(3)
-        await telebot.send_message(chat, f"/fban {FBAN} {REASON}")
+        await borg.send_message(chat, f"/fban {FBAN} {REASON}")
         await asyncio.sleep(3)
     await event.edit(f"SuperFBan Completed. Affected {len(fedList) - exCount} feds.\n#TB")  
 # By @HeisenbergTheDanger, @its_xditya
@@ -89,4 +89,4 @@ async def _(event):
 \n**Usage**: Mass-Ban in all feds you are admin in.\
 \nSet `EXCLUDE_FED fedid1|fedid2` in heroku vars to exclude those feds.\
 \nSet var `FBAN_GROUP_ID` ti the group with rose, where you want FBan to take place.\
-\n\nGet help - @TeleBotSupport'''
+\n\nGet help - @borgSupport'''
