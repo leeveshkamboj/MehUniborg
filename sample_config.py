@@ -120,7 +120,14 @@ class Config(object):
     TELE_GRAM_2FA_CODE = os.environ.get("TELE_GRAM_2FA_CODE", None)
     #
     SKUZZY_LEELA = os.environ.get("SKUZZY_LEELA", None)
-    LOG_ID = int(os.environ.get("LOG_ID", None))
+    LOG_ID = os.environ.get("LOG_ID", None)
+    if LOG_ID:
+        LOG_ID = int(LOG_ID)
+    FBAN_GROUP_ID = os.environ.get("FBAN_GROUP_ID", None)
+    if FBAN_GROUP_ID:
+        FBAN_GROUP_ID = int(FBAN_GROUP_ID)
+    EXCLUDE_FED = os.environ.get("EXCLUDE_FED", None)
+
 class Production(Config):
     LOGGER = False
 
