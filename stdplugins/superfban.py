@@ -23,7 +23,7 @@ async def _(event):
             REASON += (a + " ")
     else:
         FBAN = arg
-        REASON = " #TBMassBanned "
+        REASON = " #MassBanned "
     if Config.FBAN_GROUP_ID:
         chat = Config.FBAN_GROUP_ID
     else:
@@ -82,7 +82,7 @@ async def _(event):
         await asyncio.sleep(3)
         await borg.send_message(chat, f"/fban {FBAN} {REASON}")
         await asyncio.sleep(3)
-    await event.edit(f"SuperFBan Completed. Affected {len(fedList) - exCount} feds.\n#TB")  
+    await event.edit(f"SuperFBan Completed. Affected {len(fedList) - exCount} feds.")  
 # By @HeisenbergTheDanger, @its_xditya
 
 '''.superfban <username/userid> <reason>\
