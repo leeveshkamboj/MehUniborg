@@ -67,7 +67,7 @@ async def _(event):
 
     await event.edit(f"Fbaning in {len(fedList)} feds.")
     try:
-        await telebot.send_message(chat, f"/start")
+        await borg.send_message(chat, f"/start")
     except:
         await event.edit("FBAN_GROUP_ID is incorrect so using current chat id.")
         chat = await event.get_chat()
