@@ -5,7 +5,7 @@
 
 from telethon import events
 import random, re
-from userbot.utils import admin_cmd
+from uniborg.utils import admin_cmd
 import asyncio
 
 # By @HeisenbergTheDanger, @its_xditya
