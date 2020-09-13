@@ -70,8 +70,8 @@ async def _(event):
     await asyncio.sleep(3)
     if Config.EXCLUDE_FED:
         excludeFed = Config.EXCLUDE_FED.split("|")
-    for n in range(len(excludeFed)):
-        excludeFed[n] = excludeFed[n].strip()
+        for n in range(len(excludeFed)):
+            excludeFed[n] = excludeFed[n].strip()
     exCount = 0
     for fed in fedList:
         if Config.EXCLUDE_FED and fed in excludeFed:
