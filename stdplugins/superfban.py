@@ -5,7 +5,7 @@
 
 from telethon import events
 import random, re
-from unibog.util import admin_cmd
+from uniborg.util import admin_cmd
 import asyncio
 
 
