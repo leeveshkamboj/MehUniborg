@@ -102,7 +102,7 @@ async def _(event):
         await asyncio.sleep(3)
         await borg.send_message(chat, f"/fban {FBAN} {REASON}")
         await asyncio.sleep(3)
-    await event.edit(f"SuperFBan Completed. Affected {len(fedList) - exCount} feds.\n#TB")  
+    await event.edit(f"SuperFBan Completed. Affected {len(fedList) - exCount} feds.-")  
 # By @HeisenbergTheDanger, @its_xditya
 @borg.on(admin_cmd("superunfban ?(.*)"))
 async def _(event):
